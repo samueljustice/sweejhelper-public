@@ -59,22 +59,13 @@ def send_message_to_sweejhelper(message):
 # Generate a unique request id
 request_id = str(uuid.uuid4())
 
-# Arguments to pass to the 'editMemoryLocation' function
+# Arguments to pass to the 'renameTargetTrack' function
+# Available argument options:
+# "currentTrackName" [type: str, example: "Old Track Name"],
+# "newTrackName" [type: str, example: "New Track Name"]
 arguments = {
-    "number": 1,  # Replace with the appropriate number
-    "name": "My Location",  # Replace with the appropriate name
-    "startTime": "00:00:00:00",  # Replace with the appropriate startTime
-    "endTime": "00:01:00:00",  # Replace with the appropriate endTime
-    "timeProperties": "SampleBase",  # Replace with the appropriate timeProperties
-    "zoomSettings": True,  # Replace with the appropriate value
-    "prePostRollTimes": False,  # Replace with the appropriate value
-    "trackVisibility": True,  # Replace with the appropriate value
-    "trackHeights": False,  # Replace with the appropriate value
-    "groupEnables": True,  # Replace with the appropriate value
-    "windowConfiguration": False,  # Replace with the appropriate value
-    "windowConfigurationIndex": 0,  # Replace with the appropriate value
-    "windowConfigurationName": "Default",  # Replace with the appropriate value
-    "comments": "No comments"  # Replace with the appropriate comments
+    "currentTrackName": "Audio 1",
+    "newTrackName": "Renamed Track Name"
 }
 
 # Convert the arguments to a JSON string
@@ -83,5 +74,5 @@ json_arguments = json.dumps(arguments)
 # URL encode the JSON arguments
 encoded_arguments = urllib.parse.quote(json_arguments)
 
-# Send a request to edit memory location, including the request id and arguments in the URL
-send_message_to_sweejhelper(f'sweejhelper://proToolsFunction/editMemoryLocation/{request_id}?arguments={encoded_arguments}')
+# Send a request to rename target track, including the request id and arguments in the URL
+send_message_to_sweejhelper(f'sweejhelper://proToolsFunction/renameTargetTrack/{request_id}?arguments={encoded_arguments}')
